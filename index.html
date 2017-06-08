@@ -4,16 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>PayPal for Slack</title>
-  <!-- Vanilla Boostrap 3 from CDN for now -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
   <link href="css/site.css" rel="stylesheet"/>
 </head>
 <body>
 
   <header>
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <!-- preventing log-in to go to second line on xs seems to require custom css, we can do this later !-->
+    <nav class="navbar navbar-default navbar-position">
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand" href="#"><img src="img/logo.png"/></a>
@@ -36,7 +32,7 @@
   <section id="main">
     <div class="container">
       <div class="row">
-        <ul class="list-inline">
+        <ul class="list-inline page-nav">
           <li><a href="#about">About PayPal for Slack</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#get-started">Get Started</a></li>
@@ -46,11 +42,11 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-7 about-container">
           <h2 class="anchor" id="about">Send and receive money while you chat</h2>
           <p>Chip in for that going away present. Get paid back for lunch.</p>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-5 about-ex">
           <img src="img/example.png" class="img-responsive" alt="paypal slack example"/>
         </div>
       </div>
@@ -58,11 +54,13 @@
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
           <h2 class="text-center anchor" id="how-it-works">How it Works</h2>
-          <ul class="list-group">
-            <li class="list-group-item"><code>/paypal send $5 to @dave</code></li>
-            <li class="list-group-item"><code>You sent $5 to @dave. Nice work!</code></li>
-            <li class="list-group-item"><code>@Lee just sent $5 to @dfeff</code></li>
-          </ul>
+          <div class="how-container">
+            <ul class="list-group">
+              <li class="list-group-item"><code>/paypal send $5 to @dave</code></li>
+              <li class="list-group-item"><code>You sent $5 to @dave. Nice work!</code></li>
+              <li class="list-group-item"><code>@Lee just sent $5 to @dfeff</code></li>
+            </ul>
+          </div>
         </div>
       </div>
       <hr/>
@@ -71,20 +69,20 @@
       <div class="row">
         <h2 class="text-center anchor" id="get-started">Get Started</h2>
       </div>
-      <div class="row">
+      <div class="row get-container">
         <!--The numbers need to be separate block-level elements, but did not implement this-->
         <div class="col-sm-4">
-          <p>1 Add PayPal for Slack to your team.</p>
+          <p><span class="numbers">1</span> Add PayPal for Slack to your team.</p>
         </div>
         <div class="col-sm-4">
-          <p>2 Link your PayPal account and set how you'd like to pay.</p>
+          <p><span class="numbers">2</span> Link your PayPal account and set how you'd like to pay.</p>
         </div>
         <div class="col-sm-4">
-          <p>3 Type <code>/paypal</code> and tell us how much to send and to whom.</p>
+          <p><span class="numbers">3</span> Type <code>/paypal</code> and tell us how much to send and to whom.</p>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
+        <div class="col-sm-8 col-sm-offset-2 button">
           <a class="btn btn-block btn-primary" role="button">Add PayPal to your Slack team</a>
         </div>
       </div>
@@ -92,35 +90,24 @@
   </section>
   <footer class="container">
     <div class="row">
-      <ul class="list-inline">
+      <ul class="list-inline footer-nav">
         <li><a href="#">HELP & CONTACT</a></li>
         <li><a href="#">SECURITY</a></li>
       </ul>
     </div>
     <hr/>
     <div class="row">
-      <div class="hidden-xs text-right text-muted">
+    <!-- visible-xs, hidden xs are deprecated
+    https://stackoverflow.com/questions/14207109/hiding-elements-in-responsive-layout -->
+      <div class="text-muted copyright">
         <ul class="list-inline">
           <li>
-            <small>1999-2016 &copy; PayPal, Inc. All rights reserved</small>
+            <small>&copy; 1999-2016 PayPal, Inc. All rights reserved</small>
           </li>
-          <li><a href="#">
+          <li class="legal-links"><a href="#">
             <small>Privacy</small>
           </a></li>
-          <li><a href="#">
-            <small>Legal</small>
-          </a></li>
-        </ul>
-      </div>
-      <div class="visible-xs text-muted">
-        <p>
-          <small>1999-2016 &copy; PayPal, Inc. All rights reserved</small>
-        </p>
-        <ul class="list-inline">
-          <li><a href="#">
-            <small>Privacy</small>
-          </a></li>
-          <li><a href="#">
+          <li class="legal-links"><a href="#">
             <small>Legal</small>
           </a></li>
         </ul>
@@ -129,8 +116,6 @@
   </footer>
   <!-- Vanilla Boostrap 3 from CDN for now -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-          crossorigin="anonymous"></script>
+  <script src="Source/js/bootstrap/bootstrap.min.js"></script>
 </body>
 </html>
